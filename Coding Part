@@ -1,0 +1,52 @@
+import java.awt.*; 
+import java.awt.event.*; 
+public class FruitVotingApp extends Frame implements ActionListener { 
+private int appleVotes = 0; 
+private int bananaVotes = 0; 
+private int orangeVotes = 0; 
+private Label appleVoteLabel; 
+private Label bananaVoteLabel; 
+private Label orangeVoteLabel; 
+public FruitVotingApp() { 
+setTitle("Fruit Voting App"); 
+setLayout(new GridLayout(4, 2)); 
+Button appleButton = new Button("Vote for Apple"); 
+Button bananaButton = new Button("Vote for Banana"); 
+Button orangeButton = new Button("Vote for Orange"); 
+appleButton.addActionListener(this); 
+bananaButton.addActionListener(this); 
+orangeButton.addActionListener(this); 
+add(appleButton); 
+add(bananaButton); 
+add(orangeButton); 
+appleVoteLabel = new Label("Apple Votes: 0"); 
+bananaVoteLabel = new Label("Banana Votes: 0"); 
+orangeVoteLabel = new Label ("Orange Votes: 0"); 
+add(appleVoteLabel); 
+add(bananaVoteLabel); 
+add(orangeVoteLabel); 
+setSize(300, 200); 
+addWindowListener(new WindowAdapter() { 
+public void windowClosing(WindowEvent windowEvent) { 
+System.exit(0); 
+} 
+}); 
+} 
+public void actionPerformed(ActionEvent e) { 
+String action = e.getActionCommand(); 
+if (action.equals("Vote for Apple")) { 
+appleVotes++; 
+appleVoteLabel.setText("Apple Votes: " + appleVotes); 
+} else if (action.equals("Vote for Banana")) { 
+bananaVotes++; 
+bananaVoteLabel.setText("Banana Votes: " + bananaVotes); 
+} else if (action.equals("Vote for Orange")) { 
+orangeVotes++; 
+orangeVoteLabel.setText("Orange Votes: " + orangeVotes); 
+} 
+} 
+public static void main(String[] args) { 
+FruitVotingApp app = new FruitVotingApp(); 
+app.setVisible(true); 
+} 
+}
